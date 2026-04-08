@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────── */
+@theme {
+  --color-gold:        #D4AF37;
+  --color-gold-light:  #F0D060;
+  --color-gold-dark:   #A8882A;
+  --color-black:       #0B0B0B;
+  --color-black-soft:  #111111;
+  --color-black-card:  #161616;
+  --color-black-border:#2A2A2A;
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Jost', system-ui, sans-serif;
+}
+
+/* ─── Base ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0B0B0B;
+}
+
+body {
+  margin: 0;
+  font-family: 'Jost', system-ui, sans-serif;
+  color: #E8E0CC;
+  background-color: #0B0B0B;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Gold Gradient Utility ─────────────────────────── */
+.gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F0D060 50%, #A8882A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #D4AF37 0%, #F0D060 50%, #A8882A 100%);
+}
+
+.gold-border-gradient {
+  border-image: linear-gradient(135deg, #D4AF37, #F0D060, #A8882A) 1;
+}
+
+/* ─── Glow Effects ───────────────────────────────────── */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(212,175,55,0.3), 0 0 60px rgba(212,175,55,0.1);
+}
+
+.gold-glow-text {
+  text-shadow: 0 0 20px rgba(212,175,55,0.6);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0B0B0B; }
+::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #F0D060; }
+
+/* ─── Section divider ────────────────────────────────── */
+.section-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  margin: 0 auto;
+}
+
+/* ─── Noise texture overlay ─────────────────────────── */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
