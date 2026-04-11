@@ -4,12 +4,12 @@ import DrinksShowcase from './DrinksShowcase';
 
 /* ── Menu page images generated from PDFs ── */
 const FOOD_PAGES   = [
-  '/assets/images/menu/food-menu-page1.jpg',
-  '/assets/images/menu/food-menu-page2.jpg',
+  '/assets/images/menu/food-menu-page1.webp',
+  '/assets/images/menu/food-menu-page2.webp',
 ];
 const LIQUOR_PAGES = [
-  '/assets/images/menu/liquor-menu-page1.jpg',
-  '/assets/images/menu/liquor-menu-page2.jpg',
+  '/assets/images/menu/liquor-menu-page1.webp',
+  '/assets/images/menu/liquor-menu-page2.webp',
 ];
 
 /* ────────────────────────────────────────────────────────── */
@@ -218,8 +218,10 @@ export default function Menu() {
             >
               <div className="absolute inset-0 bg-[#0B0B0B]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
               <img
-                src="/assets/images/menu/food-cover.png"
+                src="/assets/images/menu/food-cover.webp"
                 alt="Food Menu Preview"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               {/* hover overlay */}
@@ -266,8 +268,10 @@ export default function Menu() {
             >
               <div className="absolute inset-0 bg-[#0B0B0B]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
               <img
-                src="/assets/images/menu/liquor-cover.png"
+                src="/assets/images/menu/liquor-cover.webp"
                 alt="Liquor Menu Preview"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

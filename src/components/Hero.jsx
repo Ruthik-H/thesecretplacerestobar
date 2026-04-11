@@ -14,17 +14,15 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* HERO BACKGROUND IMAGE */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat origin-center"
+      <motion.img
+        src={bgImage}
+        fetchpriority="high"
+        loading="eager"
+        alt="The Secret Place Hero"
+        className="absolute inset-0 w-full h-full object-cover origin-center bg-[#0B0B0B]"
         initial={{ scale: 1 }}
         animate={{ scale: 1.1 }}
         transition={{ duration: 25, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-        style={{
-          backgroundImage: `url('${bgImage}')`,
-          backgroundColor: '#0B0B0B', /* Fallback while image loads */
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
       />
 
       {/* Dark + gold tint overlay */}

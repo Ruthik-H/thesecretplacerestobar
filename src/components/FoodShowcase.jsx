@@ -2,22 +2,22 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 const foodPhotos = [
-  { id: 1,  src: '/assets/images/foodshowcase/food1.png' },
-  { id: 2,  src: '/assets/images/foodshowcase/food2.png' },
-  { id: 3,  src: '/assets/images/foodshowcase/food3.png' },
-  { id: 4,  src: '/assets/images/foodshowcase/food4.png' },
-  { id: 5,  src: '/assets/images/foodshowcase/food5.png' },
-  { id: 6,  src: '/assets/images/foodshowcase/food6.png' },
-  { id: 7,  src: '/assets/images/foodshowcase/food7.png' },
-  { id: 8,  src: '/assets/images/foodshowcase/food8.png' },
-  { id: 9,  src: '/assets/images/foodshowcase/food9.png' },
-  { id: 10, src: '/assets/images/foodshowcase/new1.png' },
-  { id: 11, src: '/assets/images/foodshowcase/new2.png' },
-  { id: 12, src: '/assets/images/foodshowcase/new3.png' },
-  { id: 13, src: '/assets/images/foodshowcase/new4.png' },
-  { id: 14, src: '/assets/images/foodshowcase/new5.png' },
-  { id: 15, src: '/assets/images/foodshowcase/new6.png' },
-  { id: 16, src: '/assets/images/foodshowcase/new7.png' },
+  { id: 1,  src: '/assets/images/foodshowcase/food1.webp' },
+  { id: 2,  src: '/assets/images/foodshowcase/food2.webp' },
+  { id: 3,  src: '/assets/images/foodshowcase/food3.webp' },
+  { id: 4,  src: '/assets/images/foodshowcase/food4.webp' },
+  { id: 5,  src: '/assets/images/foodshowcase/food5.webp' },
+  { id: 6,  src: '/assets/images/foodshowcase/food6.webp' },
+  { id: 7,  src: '/assets/images/foodshowcase/food7.webp' },
+  { id: 8,  src: '/assets/images/foodshowcase/food8.webp' },
+  { id: 9,  src: '/assets/images/foodshowcase/food9.webp' },
+  { id: 10, src: '/assets/images/foodshowcase/new1.webp' },
+  { id: 11, src: '/assets/images/foodshowcase/new2.webp' },
+  { id: 12, src: '/assets/images/foodshowcase/new3.webp' },
+  { id: 13, src: '/assets/images/foodshowcase/new4.webp' },
+  { id: 14, src: '/assets/images/foodshowcase/new5.webp' },
+  { id: 15, src: '/assets/images/foodshowcase/new6.webp' },
+  { id: 16, src: '/assets/images/foodshowcase/new7.webp' },
 ];
 
 /* ────────────────────────────────────────────────────────── */

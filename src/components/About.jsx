@@ -71,8 +71,10 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-[#0B0B0B] opacity-40 z-0" />
             <img 
-              src="/assets/images/gallery/10.jpg" 
+              src="/assets/images/gallery/20260408_152921.jpg.webp" 
               alt="The Secret Place Ambience" 
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -89,8 +91,10 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-[#0B0B0B] opacity-60 z-0" />
             <img 
-              src="/assets/images/gallery/1.jpg" 
+              src="/assets/images/gallery/IMG_6654.webp" 
               alt="Signature Cocktail" 
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
             {/* Elegant corner accent */}
