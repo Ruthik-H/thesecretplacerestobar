@@ -1,28 +1,40 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const images = [
-  { id: 1, src: '/assets/images/gallery/1.jpg', title: 'The Ambiance' },
-  { id: 2, src: '/assets/images/gallery/10.jpg', title: 'Luxury Bites' },
+  { id: 1, src: '/assets/images/gallery/1775928124676.png', title: 'The Ambiance' },
+  { id: 2, src: '/assets/images/gallery/20260407_221753.jpg.jpeg', title: 'Luxury Bites' },
   { id: 3, src: '/assets/images/gallery/IMG_6680.jpg', title: 'Signature Sips' },
-  { id: 4, src: '/assets/images/gallery/IMG_9720.jpg', title: 'Golden Hour' },
+  { id: 4, src: '/assets/images/gallery/IMG_4915.jpg', title: 'Golden Hour' },
   { id: 5, src: '/assets/images/gallery/IMG_9723.jpg', title: 'The Crowd' },
   { id: 6, src: '/assets/images/gallery/birthday.jpg', title: 'Celebrations' },
   { id: 7, src: '/assets/images/gallery/unnamed.webp', title: 'Aesthetic' },
   { id: 8, src: '/assets/images/gallery/new.jpg', title: 'New Vibe' },
-  { id: 9, src: '/assets/images/gallery/new2.jpg?v=2', title: 'Exclusive' },
+  { id: 9, src: '/assets/images/gallery/IMG_5991.jpg', title: 'Exclusive' },
   { id: 10, src: '/assets/images/gallery/image.png', title: 'The Atmosphere' },
   { id: 11, src: '/assets/images/gallery/new1.jpeg', title: 'Luxury Bites' },
-  { id: 12, src: '/assets/images/gallery/new2.jpg?v=2', title: 'Golden Vibe' },
-  { id: 13, src: '/assets/images/gallery/new3.jpg', title: 'Aesthetic Chill' },
+  { id: 12, src: '/assets/images/gallery/IMG_6654.jpg', title: 'Golden Vibe' },
+  { id: 13, src: '/assets/images/gallery/IMG_6681.jpg', title: 'Aesthetic Chill' },
   { id: 14, src: '/assets/images/gallery/new4.jpeg', title: 'Premium Taste' },
   { id: 15, src: '/assets/images/gallery/new10.jpeg', title: 'New Arrival' },
+  { id: 16, src: '/assets/images/gallery/IMG_6682.jpg', title: 'Classic Choice' },
+  { id: 17, src: '/assets/images/gallery/IMG_9722.jpg', title: 'Vibrant Colors' },
+  { id: 18, src: '/assets/images/gallery/unnamed.jpg', title: 'Evening Style' },
+  { id: 19, src: '/assets/images/gallery/20260408_152921.jpg.jpeg', title: 'Moments' },
 ];
 
 export default function Gallery() {
   const [activeId, setActiveId] = useState(4);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // set initial value
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <section id="gallery" className="relative py-28 lg:py-40 bg-[#0B0B0B] overflow-hidden">
@@ -50,13 +62,17 @@ export default function Gallery() {
             <motion.div
               key={img.id}
               className="relative rounded-2xl md:rounded-[2rem] overflow-hidden cursor-pointer snap-center lg:snap-align-none shrink-0 min-w-[75vw] sm:min-w-[50vw] md:min-w-0 md:w-auto h-full"
-              onMouseEnter={() => setActiveId(img.id)}
-              onClick={() => setActiveId(img.id)}
+              onMouseEnter={() => !isMobile && setActiveId(img.id)}
+              onClick={() => setActiveId(img.id)} // Allow clicks on mobile for text visibility without flex reflow
               animate={{ 
-                flex: activeId === img.id ? 5 : 1,
+                flex: isMobile ? 'none' : (activeId === img.id ? 5 : 1),
                 opacity: 1 
               }}
-              initial={{ flex: 1, opacity: 0 }}
+              initial={{ flex: isMobile ? 'none' : 1, opacity: 0 }}
+              style={{
+                WebkitTransform: 'translateZ(0)',
+                willChange: isMobile ? 'transform' : 'flex, transform',
+              }}
               transition={{ 
                 flex: { type: "spring", stiffness: 100, damping: 20 },
                 opacity: { duration: 0.5 }
@@ -69,7 +85,9 @@ export default function Gallery() {
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out" 
                 style={{ 
-                  transform: activeId === img.id ? 'scale(1.05)' : 'scale(1.2)' 
+                  transform: activeId === img.id ? 'scale(1.05) translateZ(0)' : 'scale(1.2) translateZ(0)',
+                  WebkitTransform: activeId === img.id ? 'scale(1.05) translateZ(0)' : 'scale(1.2) translateZ(0)',
+                  willChange: 'transform'
                 }}
               />
               

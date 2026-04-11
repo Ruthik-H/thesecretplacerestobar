@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Gallery from './components/Gallery';
+import FoodShowcase from './components/FoodShowcase';
 import Vibes from './components/Vibes';
 import Menu from './components/Menu/Menu';
 import Contact from './components/Contact';
@@ -18,6 +19,7 @@ function App() {
         <About />
         <Vibes />
         <Gallery />
+        <FoodShowcase />
         <Menu />
         <Contact />
       </main>

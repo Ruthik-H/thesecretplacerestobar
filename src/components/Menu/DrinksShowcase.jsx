@@ -19,20 +19,22 @@ const cocktailDescs = [
   "Your night's perfect catalyst."
 ];
 
-// Dynamically load images via Vite glob from the public folder
-const mocktailImgModules = import.meta.glob('/public/assets/images/mocktails/*.{jpg,jpeg,png,webp,avif}', { eager: true });
-const cocktailImgModules = import.meta.glob('/public/assets/images/cocktails/*.{jpg,jpeg,png,webp,avif}', { eager: true });
+// Dynamically load images via Vite glob from the public folder (REMOVED due to Vite restrictions)
+// Hardcoding paths for reliable serving
+const mocktailsList = [
+  { imgUrl: '/assets/images/mocktails/gettyimages-1824333822-612x612.jpg', desc: mocktailDescs[0] },
+  { imgUrl: '/assets/images/mocktails/gettyimages-1824340185-612x612.jpg', desc: mocktailDescs[1] },
+  { imgUrl: '/assets/images/mocktails/gettyimages-2168187871-612x612.jpg', desc: mocktailDescs[2] },
+  { imgUrl: '/assets/images/mocktails/gettyimages-2215037758-612x612.jpg', desc: mocktailDescs[3] }
+];
 
-// Convert absolute import paths to public serving paths by stripping away '/public'
-const mocktailsList = Object.keys(mocktailImgModules).map((filePath, index) => ({
-  imgUrl: filePath.replace('/public', ''),
-  desc: mocktailDescs[index % mocktailDescs.length]
-}));
-
-const cocktailsList = Object.keys(cocktailImgModules).map((filePath, index) => ({
-  imgUrl: filePath.replace('/public', ''),
-  desc: cocktailDescs[index % cocktailDescs.length]
-}));
+const cocktailsList = [
+  { imgUrl: '/assets/images/cocktails/WhatsApp Image 2026-04-07 at 22.37.19.jpeg', desc: cocktailDescs[0] },
+  { imgUrl: '/assets/images/cocktails/WhatsApp Image 2026-04-07 at 22.38.02.jpeg', desc: cocktailDescs[1] },
+  { imgUrl: '/assets/images/cocktails/WhatsApp Image 2026-04-07 at 22.40.02.jpeg', desc: cocktailDescs[2] },
+  { imgUrl: '/assets/images/cocktails/WhatsApp Image 2026-04-07 at 22.40.29.jpeg', desc: cocktailDescs[3] },
+  { imgUrl: '/assets/images/cocktails/WhatsApp Image 2026-04-07 at 22.40.39.jpeg', desc: cocktailDescs[4] }
+];
 
 const ShowcaseCard = ({ item }) => (
   <motion.div 
