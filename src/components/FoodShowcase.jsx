@@ -3,19 +3,17 @@ import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'fra
 
 const foodPhotos = [
   { id: 1,  src: '/assets/images/foodshowcase/food2.webp' },
-  { id: 2,  src: '/assets/images/foodshowcase/food3.webp' },
-  { id: 3,  src: '/assets/images/foodshowcase/food5.webp' },
-  { id: 4,  src: '/assets/images/foodshowcase/food6.webp' },
-  { id: 5,  src: '/assets/images/foodshowcase/food7.webp' },
-  { id: 6,  src: '/assets/images/foodshowcase/food9.webp' },
-  { id: 7,  src: '/assets/images/foodshowcase/new3.webp' },
-  { id: 8,  src: '/assets/images/foodshowcase/new4.jpeg' },
-  { id: 9,  src: '/assets/images/foodshowcase/new5.jpeg' },
-  { id: 10, src: '/assets/images/foodshowcase/new6.jpeg' },
-  { id: 11, src: '/assets/images/foodshowcase/new7.jpeg' },
-  { id: 12, src: '/assets/images/foodshowcase/new8.jpeg' },
-  { id: 13, src: '/assets/images/foodshowcase/new9.jpeg' },
-  { id: 14, src: '/assets/images/foodshowcase/new10.jpeg' },
+  { id: 2,  src: '/assets/images/foodshowcase/food5.webp' },
+  { id: 3,  src: '/assets/images/foodshowcase/food7.webp' },
+  { id: 4,  src: '/assets/images/foodshowcase/food9.webp' },
+  { id: 5,  src: '/assets/images/foodshowcase/new3.webp' },
+  { id: 6,  src: '/assets/images/foodshowcase/new4.jpeg' },
+  { id: 7,  src: '/assets/images/foodshowcase/new5.jpeg' },
+  { id: 8,  src: '/assets/images/foodshowcase/new6.jpeg' },
+  { id: 9,  src: '/assets/images/foodshowcase/new7.jpeg' },
+  { id: 10, src: '/assets/images/foodshowcase/new8.jpeg' },
+  { id: 11, src: '/assets/images/foodshowcase/new9.jpeg' },
+  { id: 12, src: '/assets/images/foodshowcase/new10.jpeg' },
 ];
 
 /* ────────────────────────────────────────────────────────── */
@@ -339,10 +337,6 @@ export default function FoodShowcase() {
         .food-grid > div:nth-child(10) { grid-column: span 1; }
         .food-grid > div:nth-child(11) { grid-column: span 1; }
         .food-grid > div:nth-child(12) { grid-column: span 1; }
-        .food-grid > div:nth-child(13) { grid-column: span 2; }
-        .food-grid > div:nth-child(14) { grid-column: span 1; }
-        .food-grid > div:nth-child(15) { grid-column: span 1; }
-        .food-grid > div:nth-child(16) { grid-column: span 2; }
 
         /* ── Card ── */
         .food-card-wrapper {
@@ -479,11 +473,7 @@ export default function FoodShowcase() {
           .food-grid > div:nth-child(9) { grid-column: span 2; }
           .food-grid > div:nth-child(10) { grid-column: span 1; }
           .food-grid > div:nth-child(11) { grid-column: span 1; }
-          .food-grid > div:nth-child(12) { grid-column: span 1; }
-          .food-grid > div:nth-child(13) { grid-column: span 2; }
-          .food-grid > div:nth-child(14) { grid-column: span 1; }
-          .food-grid > div:nth-child(15) { grid-column: span 1; }
-          .food-grid > div:nth-child(16) { grid-column: span 2; }
+          .food-grid > div:nth-child(12) { grid-column: span 2; }
         }
 
         /* ── Responsive — Mobile ── */
@@ -505,11 +495,7 @@ export default function FoodShowcase() {
           .food-grid > div:nth-child(9) { grid-column: span 2; }
           .food-grid > div:nth-child(10) { grid-column: span 1; }
           .food-grid > div:nth-child(11) { grid-column: span 1; }
-          .food-grid > div:nth-child(12) { grid-column: span 1; }
-          .food-grid > div:nth-child(13) { grid-column: span 2; }
-          .food-grid > div:nth-child(14) { grid-column: span 1; }
-          .food-grid > div:nth-child(15) { grid-column: span 1; }
-          .food-grid > div:nth-child(16) { grid-column: span 2; }
+          .food-grid > div:nth-child(12) { grid-column: span 2; }
           .food-header { margin-bottom: 1.5rem; }
           .food-quote  { margin-top: 1.5rem; }
           .lb-prev { left: 0.4rem; }
