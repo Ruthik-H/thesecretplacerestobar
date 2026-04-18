@@ -1,152 +1,246 @@
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { useEffect } from 'react';
 
 export default function Hero() {
-  const isMobile = window.innerWidth < 768;
+
+  const handleScrollToMenu = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const menuSection = document.getElementById('menu');
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const bgImage = isMobile
     ? "/assets/images/hero/hero-mobile.webp"
     : "/assets/images/hero/hero.webp";
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* HERO BACKGROUND IMAGE */}
-      <motion.img
-        src={bgImage}
-        fetchpriority="high"
-        loading="eager"
-        alt="The Secret Place Hero"
-        className="absolute inset-0 w-full h-full object-cover origin-center bg-[#0B0B0B]"
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.1 }}
-        transition={{ duration: 25, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-      />
-
-      {/* Dark + gold tint overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/10 via-transparent to-[#D4AF37]/10 pointer-events-none" />
-
-      {/* Animated gold particles and blurred circular elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating blurred orbs */}
-        <motion.div 
-          className="absolute w-[400px] h-[400px] bg-[#D4AF37]/10 rounded-full blur-[100px]"
-          animate={{ x: [0, 100, -50, 0], y: [0, -100, 50, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          style={{ top: '10%', left: '20%' }}
+    <section id="home" className="hero-entrance-section">
+      
+      {/* ── INSIDE THE PUB (Background & Atmosphere) ── */}
+      <div className="hero-inside-world">
+        <img
+          src={bgImage}
+          fetchpriority="high"
+          alt="The Secret Place pub background"
+          className="hero-inside-bg"
         />
-        <motion.div 
-          className="absolute w-[300px] h-[300px] bg-white/5 rounded-full blur-[80px]"
-          animate={{ x: [0, -80, 40, 0], y: [0, 80, -60, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-          style={{ bottom: '20%', right: '15%' }}
-        />
+        <div className="hero-inside-overlay" />
+        
+        {/* Atmosphere: Moving gold light beams & haze */}
+        <div className="light-beam beam-1" />
+        <div className="light-beam beam-2" />
+        <div className="light-haze" />
 
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-px h-16 bg-gradient-to-b from-transparent via-[#D4AF37]/40 to-transparent"
-            style={{
-              left: `${8 + i * 8}%`,
-              top: `${Math.random() * 60 + 10}%`,
-            }}
-            animate={{ opacity: [0, 1, 0], y: [-20, 20, -20] }}
-            transition={{
-              duration: 3 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 4,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </div>
-
-      {/* ── HERO CONTENT ── */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Tagline above */}
-        <motion.p
-          initial={{ opacity: 0, letterSpacing: '0.5em' }}
-          animate={{ opacity: 1, letterSpacing: '0.4em' }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          className="font-sans text-xs text-[#D4AF37]/80 tracking-[0.4em] uppercase mb-6"
-        >
-          ✦ Bangalore's Finest ✦
-        </motion.p>
-
-        {/* Main title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.0, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-serif font-light text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-4 leading-tight"
-        >
-          The Secret
-          <br />
-          <span className="gold-gradient font-semibold italic">Place</span>
-        </motion.h1>
-
-        {/* Sub-brand */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="font-sans text-sm text-[#D4AF37]/60 tracking-[0.5em] uppercase mb-8"
-        >
-          Restobar
-        </motion.p>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="section-divider mb-8"
-        />
-
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="font-serif italic text-xl sm:text-2xl text-[#E8E0CC]/80 mb-10"
-        >
-          Where Taste Meets Vibe
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <a
-            href="#menu"
-            className="group px-10 py-4 gold-gradient-bg text-black font-sans text-sm font-semibold tracking-[0.2em] uppercase hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all duration-300 hover:scale-105"
-          >
-            Explore Menu
+        {/* The Text made of Glowing Gold Light Rays */}
+        <div className="hero-inside-content">
+          <div className="neon-particles">
+            {[...Array(15)].map((_, i) => (
+              <div key={i} className={`particle p-${i}`} />
+            ))}
+          </div>
+          
+          <h1 className="light-ray-text">
+            <span>The Secret</span>
+            <br />
+            <span className="light-ray-accent">Place</span>
+          </h1>
+          <p className="light-ray-sub">Restobar</p>
+          
+          <a href="#menu" className="hero-enter-btn" onClick={handleScrollToMenu}>
+            Enter the Experience
           </a>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#D4AF37]/50"
-      >
-        <span className="font-sans text-[10px] tracking-[0.3em] uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown size={16} />
-        </motion.div>
-      </motion.div>
+      {/* ══════════ STYLES ══════════ */}
+      <style dangerouslySetInnerHTML={{__html: `
+        /* ── Base Section ── */
+        .hero-entrance-section {
+          position: relative;
+          min-height: 100vh;
+          width: 100%;
+          background: #030201; /* Fallback */
+          overflow: hidden;
+        }
+
+        /* ── Background World (Inside) ── */
+        .hero-inside-world {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+        }
+        .hero-inside-bg {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.45;
+          transform: scale(1.1);
+          filter: brightness(0.6) contrast(1.2) sepia(0.3) saturate(1.5);
+        }
+        .hero-inside-overlay {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse at center, transparent 10%, rgba(3,2,1,0.9) 100%);
+        }
+
+        /* ── Dynamic Gold Lighting & Beams ── */
+        .light-beam {
+          position: absolute;
+          top: -30%;
+          width: 25vh;
+          height: 150vh;
+          background: linear-gradient(to bottom, rgba(212,175,55,0.25), transparent);
+          filter: blur(25px);
+          mix-blend-mode: screen;
+          transform-origin: top center;
+          opacity: 0.5;
+        }
+        .beam-1 {
+          left: 15%;
+          transform: rotate(20deg);
+          animation: sweepBeam 9s infinite alternate ease-in-out;
+        }
+        .beam-2 {
+          right: 20%;
+          background: linear-gradient(to bottom, rgba(245,226,126,0.15), transparent);
+          transform: rotate(-25deg);
+          animation: sweepBeam 12s infinite alternate-reverse ease-in-out;
+        }
+        @keyframes sweepBeam {
+          0% { transform: rotate(10deg) scaleY(1); opacity: 0.3; }
+          100% { transform: rotate(30deg) scaleY(1.1); opacity: 0.7; }
+        }
+
+        .light-haze {
+          position: absolute;
+          bottom: 0; left: 0; right: 0; height: 50%;
+          background: radial-gradient(ellipse at bottom, rgba(212,175,55,0.12) 0%, transparent 70%);
+          filter: blur(50px);
+          animation: hazePulse 5s infinite alternate;
+        }
+        @keyframes hazePulse {
+          0% { opacity: 0.4; transform: scaleY(1); }
+          100% { opacity: 0.9; transform: scaleY(1.2); }
+        }
+
+        /* ── Inside Typography (Gold Rays) ── */
+        .hero-inside-content {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          z-index: 10;
+          opacity: 0;
+          animation: entranceFadeUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        @keyframes entranceFadeUp {
+          0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .light-ray-text {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(3rem, 7vw, 6rem);
+          font-weight: 300;
+          line-height: 1.1;
+          
+          /* Golden made-of-light effect */
+          background: linear-gradient(120deg, #F5E27E, #D4AF37, #B8952E, #FFF2B2, #F5E27E);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          color: transparent;
+          animation: shimmerColors 5s linear infinite;
+
+          text-shadow: 
+            0 0 10px rgba(212,175,55,0.5),
+            0 0 30px rgba(245,226,126,0.3),
+            0 0 60px rgba(184,149,46,0.2);
+        }
+        .light-ray-accent {
+          font-style: italic;
+          font-weight: 700;
+          text-shadow: 
+            0 0 20px rgba(245,226,126,0.7),
+            0 0 50px rgba(212,175,55,0.5),
+            0 0 100px rgba(184,149,46,0.3);
+        }
+
+        .light-ray-sub {
+          font-family: sans-serif;
+          font-size: clamp(0.7rem, 2vw, 1rem);
+          letter-spacing: 0.6em;
+          text-transform: uppercase;
+          margin-top: 1.5rem;
+          color: rgba(245,226,126,0.9);
+          text-shadow: 0 0 10px rgba(212,175,55,0.7), 0 0 20px rgba(245,226,126,0.4);
+        }
+
+        /* Golden Particles floating around text */
+        .neon-particles {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+        }
+        .particle {
+          position: absolute;
+          width: 3px; height: 3px;
+          border-radius: 50%;
+          background: #FFF;
+          animation: floatUp 4s infinite ease-in;
+          opacity: 0;
+        }
+        ${[...Array(15)].map((_, i) => `
+          .p-${i} {
+            left: ${10 + Math.random() * 80}%;
+            top: ${40 + Math.random() * 40}%;
+            animation-duration: ${3 + Math.random() * 4}s;
+            animation-delay: ${Math.random() * 3}s;
+            box-shadow: 0 0 ${10+Math.random()*15}px ${2+Math.random()*5}px ${['#D4AF37','#F5E27E','#B8952E'][i%3]};
+          }
+        `).join('')}
+        @keyframes floatUp {
+          0% { transform: translateY(0) scale(1); opacity: 0; }
+          20% { opacity: 1; }
+          80% { opacity: 1; }
+          100% { transform: translateY(-100px) scale(0); opacity: 0; }
+        }
+
+        /* ── ENTER BUTTON (Smooth Scroll) ── */
+        .hero-enter-btn {
+          display: inline-block;
+          margin-top: 3.5rem;
+          padding: 1rem 3rem;
+          font-family: sans-serif;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          color: #111;
+          border: 1px solid rgba(212,175,55,0.6);
+          background: linear-gradient(135deg, #D4AF37, #F5E27E, #B8952E);
+          box-shadow: 0 0 20px rgba(212,175,55,0.3);
+          transition: all 0.4s;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .hero-enter-btn:hover {
+          box-shadow: 0 0 30px rgba(245,226,126,0.6);
+          transform: translateY(-2px);
+          filter: brightness(1.1);
+        }
+
+        /* Responsive constraints */
+        @media (max-width: 768px) {
+          .light-ray-text { font-size: clamp(2.5rem, 12vw, 4rem); }
+          .light-beam { width: 30vw; }
+        }
+      `}} />
     </section>
   );
 }

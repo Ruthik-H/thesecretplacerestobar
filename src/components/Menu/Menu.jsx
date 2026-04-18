@@ -4,12 +4,12 @@ import DrinksShowcase from './DrinksShowcase';
 
 /* ── Menu page images generated from PDFs ── */
 const FOOD_PAGES   = [
-  '/assets/images/menu/food-menu-page1.webp',
-  '/assets/images/menu/food-menu-page2.webp',
+  '/assets/images/menu/3.jpeg',
+  '/assets/images/menu/4.jpeg',
 ];
 const LIQUOR_PAGES = [
-  '/assets/images/menu/liquor-menu-page1.webp',
-  '/assets/images/menu/liquor-menu-page2.webp',
+  '/assets/images/menu/1.jpeg',
+  '/assets/images/menu/2.jpeg',
 ];
 
 /* ────────────────────────────────────────────────────────── */
@@ -184,11 +184,11 @@ export default function Menu() {
   const [activeLb, setActiveLb] = useState(null); // 'food' | 'liquor' | null
 
   return (
-    <section id="menu" className="relative py-28 lg:py-40 bg-[#0B0B0B] overflow-hidden border-t border-[#D4AF37]/10">
+    <section id="menu" className="relative w-full py-28 lg:py-40 bg-[#0B0B0B] overflow-x-hidden border-t border-[#D4AF37]/10 box-border" style={{ outline: '1px solid red' }}>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-[#D4AF37]/5 rounded-full blur-[80px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full max-w-[1200px] mx-auto px-6 relative z-10 box-border">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

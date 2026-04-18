@@ -39,7 +39,7 @@ const cocktailsList = [
 const ShowcaseCard = ({ item }) => (
   <motion.div 
     whileHover={{ scale: 1.05 }}
-    className="relative min-w-[280px] max-w-[320px] h-[400px] rounded-2xl overflow-hidden group border border-[#D4AF37]/30 shadow-lg cursor-pointer"
+    className="relative min-w-[280px] max-w-[320px] h-[400px] rounded-2xl overflow-hidden group shadow-lg cursor-pointer"
   >
     {/* Dynamic Image */}
     <img 
@@ -54,16 +54,6 @@ const ShowcaseCard = ({ item }) => (
     />
     <div className="hidden absolute inset-0 bg-[#1a1a1a] items-center justify-center font-sans text-[#D4AF37]/30 text-sm italic">
       Image unavailable
-    </div>
-
-    {/* Glassmorphism Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:from-black/90 group-hover:via-black/60 transition-all duration-300"></div>
-    
-    <div className="absolute inset-0 p-6 flex flex-col justify-end z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-      <div className="w-10 h-0.5 bg-[#D4AF37] mb-4 group-hover:w-16 transition-all duration-300"></div>
-      <p className="text-xl font-sans text-white tracking-wide pr-4 leading-relaxed font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-        "{item.desc}"
-      </p>
     </div>
   </motion.div>
 );
